@@ -24,7 +24,7 @@ export const MOCK_SUBJECTS: Subject[] = [
         name: "Macroeconomic Theory",
         code: "ECON105",
         description: "Analysis of national income, unemployment, inflation, and the impact of fiscal and monetary policy on global markets.",
-        department: "Economic",
+        department: "Economics",
         created_at: "2024-03-05T11:15:00Z"
     }
 ];
