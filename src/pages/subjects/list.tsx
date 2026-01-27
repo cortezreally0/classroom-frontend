@@ -55,7 +55,7 @@ const SubjectsList = () => {
                 size: 300,
                 header: () => <p className="column-title">Description</p>,
                 cell: ({ getValue }) => <span
-                    className="trucate line-clamp-2">{getValue<string>()}</span>,
+                    className="truncate line-clamp-2">{getValue<string>()}</span>,
             }
         ], []),
         refineCoreProps: {
@@ -81,7 +81,7 @@ const SubjectsList = () => {
 
             <div className="intro-row">
                 <p>Quick access to essential metrics and management tools.</p>
-                <div className="action-row">
+                <div className="actions-row">
                     <div className="search-field">
                         <Search className="search-icon" />
                         <Input
