@@ -31,7 +31,11 @@ const UploadWidget = ({value = null, onChange, disabled = false}) => {
                 maxFileSize: 5000000,
                 clientAllowedFormats: ['png', 'jpg', 'jpeg', 'webp']
             },(error, result) => {
-                if(!error && result.event === 'success'){
+                if (error) {
+                    console.error('Cloudinary upload error:', error);
+                    return;
+                    }
+                if(result.event === 'success'){
                     const payload: UploadWidgetValue = {
                         url: result.info.secure_url,
                         publicId: result.info.public_id,
@@ -45,8 +49,16 @@ const UploadWidget = ({value = null, onChange, disabled = false}) => {
         }
         if(initializeWidget()) return;
 
+        let attempts = 0;
+        const maxAttempts = 20; // 10 seconds at 500ms interval
+
         const intervalId = window.setInterval(() => {
+            attempts++;
             if(initializeWidget()) {
+                window.clearInterval(intervalId);
+            }
+            if(attempts >= maxAttempts) {
+                console.warn('Cloudinary widget failed to initialize after maximum attempts');
                 window.clearInterval(intervalId);
             }
         },500)
