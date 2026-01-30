@@ -65,8 +65,9 @@ const UploadWidget = ({value = null, onChange, disabled = false}) => {
                     <img src={preview.url} alt='Uploaded file' />
                 </div>
             ) : <div className='upload-dropzone' role='button' tabIndex={0}
-                onClick={openWidget} onKeyDown={(event) => {
-                if (event.key === 'Enter') {
+                onClick={openWidget}
+                     onKeyDown={ (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
                 event.preventDefault();
                 openWidget();
                 }

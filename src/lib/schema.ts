@@ -6,7 +6,7 @@ export const facultySchema = z.object({
     role: z.enum(["admin", "teacher", "student"], {
         required_error: "Please select a role",
     }),
-    department: z.string(),
+    department: z.string().min(2, "Department must be at least 2 characters"),
     image: z.string().optional(),
     imageCldPubId: z.string().optional(),
 });

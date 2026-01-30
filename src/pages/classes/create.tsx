@@ -4,7 +4,7 @@ import {Breadcrumb} from "@/components/ui/breadcrumb.tsx";
 import {useBack} from "@refinedev/core";
 import {Separator} from "@/components/ui/separator.tsx";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {useForm} from "react-hook-form";
+import {useForm} from "@refinedev/react-hook-form";
 import {classSchema} from "@/lib/schema.ts";
 import * as z from "zod";
 import { Button } from "@/components/ui/button"
@@ -99,7 +99,7 @@ const Create = () => {
 
     const bannerPublicId = form.watch('bannerCldPubId')
 
-    const setBannerImage = (file, field) => {
+    const setBannerImage = (file: any, field: any) => {
         if(file) {
             field.onChange(file.url);
             form.setValue('bannerCldPubId', file.publicId, {
@@ -148,11 +148,11 @@ const Create = () => {
                                             <FormLabel>Banner Image <span className='text-orange-600'>*</span></FormLabel>
                                             <FormControl>
                                                 <UploadWidget
-                                                value={field.value ? {
+                                                    value={field.value ? {
                                                     url: field.value,
                                                     publicId: bannerPublicId ?? ''} : null}
-                                                    onChange={(file: any, field: any)=>
-                                                        setBannerImage (file, field)}
+                                                    onChange={(file: any) => setBannerImage
+                                                    (file, field)}
                                                 />
                                             </FormControl>
                                             <FormMessage />
