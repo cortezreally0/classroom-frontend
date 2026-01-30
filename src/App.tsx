@@ -13,10 +13,12 @@ import { useNotificationProvider } from "./components/refine-ui/notification/use
 import { ThemeProvider } from "./components/refine-ui/theme/theme-provider";
 import { dataProvider } from "./providers/data";
 import Dashboard from "@/pages/dashboard.tsx";
-import {BookOpen, Home} from 'lucide-react';
+import {BookOpen, GraduationCap, Home} from 'lucide-react';
 import {Layout} from "@/components/refine-ui/layout/layout.tsx";
 import SubjectsList from "@/pages/subjects/list.tsx";
 import SubjectsCreate from "@/pages/subjects/create.tsx";
+import ClassesList from "@/pages/classes/list.tsx";
+import ClassesCreate from "@/pages/classes/create.tsx";
 
 function App() {
   return (
@@ -44,22 +46,32 @@ function App() {
                       list: '/subjects',
                       create: '/subjects/create',
                       meta: { label: "Subjects", icon: <BookOpen />}
+                  },
+                  {
+                      name: 'classes',
+                      list: '/classes',
+                      create: '/classes/create',
+                      meta: { label: "Classes", icon: <GraduationCap />}
                   }
               ]}
             >
               <Routes>
-                  <Route element={
-                      <Layout>
-                          <Outlet />
-                      </Layout>
-                  }>
-                    <Route path="/" element={<Dashboard />} />
+                  <Route element={<Layout><Outlet /></Layout>}>
+                        {/*Dashboard path*/}
+                      <Route path="/" element={<Dashboard />} />
+                      {/*Subject path*/}
                       <Route path ='subjects'>
                           <Route index element={<SubjectsList />} />
                           <Route path='create' element={<SubjectsCreate />} />
                       </Route>
+                      {/*Classes path*/}
+                      <Route path ='classes'>
+                          <Route index element={<ClassesList />} />
+                          <Route path='create' element={<ClassesCreate />} />
+                      </Route>
                   </Route>
               </Routes>
+
               <Toaster />
               <RefineKbar />
               <UnsavedChangesNotifier />
