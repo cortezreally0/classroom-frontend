@@ -212,7 +212,7 @@ const Create = () => {
                                             <FormItem>
                                                 <FormLabel>Teacher <span className='text-orange-600'>*</span></FormLabel>
                                                 <Select onValueChange={(value) =>
-                                                    field.onChange(Number(value))}
+                                                    field.onChange(value)}
                                                         value={field.value?.toString()} >
                                                     <FormControl>
                                                         <SelectTrigger className='w-full'>
