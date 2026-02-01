@@ -1,6 +1,6 @@
 import React from 'react'
 import {CreateView} from "@/components/refine-ui/views/create-view.tsx";
-import {Breadcrumb} from "@/components/ui/breadcrumb.tsx";
+import {Breadcrumb} from "@/components/refine-ui/layout/breadcrumb.tsx";
 import {useBack} from "@refinedev/core";
 import {Separator} from "@/components/ui/separator.tsx";
 import { zodResolver } from "@hookform/resolvers/zod";
